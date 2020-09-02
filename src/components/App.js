@@ -41,26 +41,25 @@ const App = () => {
     })
   }
 
-
-  const handleCountryChange = () => {
-
-    const found = countriesInfo.findIndex(countryInfo => countryInfo.name.includes(country
+  const makeFirstCharactersUppercase = (entry) => {
+    return entry
       .split(' ')
       .map(s => s.charAt(0)
       .toUpperCase() + s
       .substr(1))
-      .join(' ')))
+      .join(' ')
+  };
+
+
+  const handleCountryChange = () => {
+
+    const found = countriesInfo.findIndex(countryInfo => countryInfo.name.includes(makeFirstCharactersUppercase(country)))
 
     if( found === -1 ) {
       return;
     }
     else if ( found > -1 ) {
-      const updatedCountry = countriesInfo.filter(countryInfo => countryInfo.name.includes(country
-        .split(' ')
-        .map(s => s.charAt(0)
-        .toUpperCase() + s
-        .substr(1))
-        .join(' ')))
+      const updatedCountry = countriesInfo.filter(countryInfo => countryInfo.name.includes(makeFirstCharactersUppercase(country)))
       setDataResponse(updatedCountry)
 
     }
